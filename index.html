@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code generator </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Lora:ital@1&display=swap');
+      </style>
+    <style>
+        body,html{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #262a2f;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Caprasimo';
+
+           
+        }
+        .container{
+            border: 2px solid wheat;
+            border-radius: 10px;
+            background: linear-gradient(to top left, rgb(14, 3, 3),#ffffffff);
+            padding: 25px 35px;
+            width: 400px;
+        }
+        .container p{
+            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-shadow: 7px 7px 5px white;
+        }
+        input{
+            width: 100%;
+            height: 40px;
+            border: 1px solid #494eea;
+            outline: 0;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        button{
+        width: 100%;
+        height: 40px;
+        background: #494eea;
+        color: #fff;
+        border: 0;
+        outline: 0;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-weight: 500;
+        font-size: 21px;
+
+        }
+        #imgbox{
+            width: 200px;
+            border-radius: 5px;
+            max-width: 0;
+            overflow: hidden;
+
+        }
+        #imgbox img{
+            width: 100px;
+            padding: 10px;
+            margin: auto 38%;
+        }
+        #qrimg{
+            border: 2px solid #d1d1d1;
+        }
+        #imgbox.showimg{
+            max-width: 300px;
+          
+        }
+        button:hover{
+            transform: scale(0.9);
+            cursor: pointer;
+            background-color: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Enter your text or URL</p>
+        <input type="text" placeholder="text or url" id="qrtext">
+        <div id="imgbox">
+            <img src="" id="qrimg">
+        </div>
+        <button onclick="qrgen()">GENEARTE QR CODE</button>
+    </div>
+    
+</body>
+<script>
+    let imgbox=document.getElementById('imgbox')
+    let qrimg=document.getElementById('qrimg')
+    let qrtext=document.getElementById('qrtext')
+    function qrgen(){
+        qrimg.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ qrtext.value;
+        imgbox.classList.add('showimg')
+    }
+</script>
+</html>
